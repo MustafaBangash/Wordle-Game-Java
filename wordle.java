@@ -15,95 +15,8 @@ class game {
     private boolean proceed = true;
     Random rand = new Random();
 
-    static JPanel panel_1a;
-    static JPanel panel_1b;
-    static JPanel panel_1c;
-    static JPanel panel_1d;
-    static JPanel panel_1e;
-
-    static JPanel panel_2a;
-    static JPanel panel_2b;
-    static JPanel panel_2c;
-    static JPanel panel_2d;
-    static JPanel panel_2e;
-
-    static JPanel panel_3a;
-    static JPanel panel_3b;
-    static JPanel panel_3c;
-    static JPanel panel_3d;
-    static JPanel panel_3e; 
-
-    static JPanel panel_4a;
-    static JPanel panel_4b;
-    static JPanel panel_4c;
-    static JPanel panel_4d;
-    static JPanel panel_4e;
-
-    static JPanel panel_5a;
-    static JPanel panel_5b;
-    static JPanel panel_5c;
-    static JPanel panel_5d;
-    static JPanel panel_5e;
-
-    static JPanel panel_6a;
-    static JPanel panel_6b;
-    static JPanel panel_6c;
-    static JPanel panel_6d;
-    static JPanel panel_6e;
-
-    static JPanel[][] panels = {
-        {panel_1a, panel_1b, panel_1c, panel_1d, panel_1e},
-        {panel_2a, panel_2b, panel_2c, panel_2d, panel_2e},
-        {panel_3a, panel_3b, panel_3c, panel_3d, panel_3e},
-        {panel_4a, panel_4b, panel_4c, panel_4d, panel_4e},
-        {panel_5a, panel_5b, panel_5c, panel_5d, panel_5e},
-        {panel_6a, panel_6b, panel_6c, panel_6d, panel_6e}
-    };
-
-    static JLabel label_1a;
-    static JLabel label_1b;
-    static JLabel label_1c;
-    static JLabel label_1d;
-    static JLabel label_1e;
-
-    static JLabel label_2a;
-    static JLabel label_2b;
-    static JLabel label_2c;
-    static JLabel label_2d;
-    static JLabel label_2e;
-
-    static JLabel label_3a;
-    static JLabel label_3b;
-    static JLabel label_3c;
-    static JLabel label_3d;
-    static JLabel label_3e;
-
-    static JLabel label_4a;
-    static JLabel label_4b;
-    static JLabel label_4c;
-    static JLabel label_4d;
-    static JLabel label_4e;
-
-    static JLabel label_5a;
-    static JLabel label_5b;
-    static JLabel label_5c;
-    static JLabel label_5d;
-    static JLabel label_5e;
-
-    static JLabel label_6a;
-    static JLabel label_6b;
-    static JLabel label_6c;
-    static JLabel label_6d;
-    static JLabel label_6e;
-
-    static JLabel[][] labels = {
-        {label_1a, label_1b, label_1c, label_1d, label_1e},
-        {label_2a, label_2b, label_2c, label_2d, label_2e},
-        {label_3a, label_3b, label_3c, label_3d, label_3e},
-        {label_4a, label_4b, label_4c, label_4d, label_4e},
-        {label_5a, label_5b, label_5c, label_5d, label_5e},
-        {label_6a, label_6b, label_6c, label_6d, label_6e}
-    };
+    static JPanel[][] panels = new JPanel[6][5];
+    static JLabel[][] labels = new JLabel[6][5];
 
     public void level() throws InterruptedException {
         do {
@@ -123,7 +36,7 @@ class game {
                 }
             };
             if (!verifyWord()) {
-                Thread.sleep(2500);
+                Thread.sleep(1000);
                 youLose();
                 Thread.sleep(2500);
                 playAgain();
