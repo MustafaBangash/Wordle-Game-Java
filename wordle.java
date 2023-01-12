@@ -113,18 +113,19 @@ class game {
             for (int i = 0; i < 6; i++) {
                 getGuess();
                 evalWord(i);
-                if (verifyWord() == true) {
-                    Thread.sleep(4000);
+                if (verifyWord()) {
+                    Thread.sleep(2500);
                     youWin();
-                    Thread.sleep(4000);
+                    Thread.sleep(2500);
                     playAgain();
                     proceed();
+                    break;
                 }
             };
             if (!verifyWord()) {
-                Thread.sleep(4000);
+                Thread.sleep(2500);
                 youLose();
-                Thread.sleep(4000);
+                Thread.sleep(2500);
                 playAgain();
                 proceed(); 
             }
@@ -154,8 +155,7 @@ class game {
     }
 
     public boolean verifyWord() {
-        if (guessWord.equals(answer))
-            verified = true;
+        if (guessWord.equals(answer)) verified = true;
         else verified = false;
         return verified;
     }
