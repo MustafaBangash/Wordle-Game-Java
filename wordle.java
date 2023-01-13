@@ -28,7 +28,7 @@ class game {
             "ALTER", "APPLY", "ARGUE", "ARISE", "AVOID", "BEGIN", "BLAME", "BREAK", "BRING", "BUILD", "BURST", "CARRY",
             "CATCH", "CAUSE", "CHECK", "CLAIM", "CLEAN", "CLEAR", "CLIMB", "CLOSE", "COUNT", "COVER", "CROSS", "DANCE",
             "DOUBT", "DRINK", "DRIVE", "ENJOY", "ENTER", "EXIST", "FIGHT", "FOCUS", "FORCE", "GUESS", "IMPLY", "ISSUE",
-            "JUDGE", "LAUGH", "LEARN", "LEAVE", "LET’S", "LIMIT", "MARRY", "MATCH", "OCCUR", "OFFER", "ORDER", "PHONE",
+            "JUDGE", "LAUGH", "LEARN", "LEAVE", "LIMIT", "MARRY", "MATCH", "OCCUR", "OFFER", "ORDER", "PHONE",
             "PLACE", "POINT", "PRESS", "PROVE", "RAISE", "REACH", "REFER", "RELAX", "SERVE", "SHALL", "SHARE", "SHIFT",
             "SHOOT", "SLEEP", "SOLVE", "SOUND", "SPEAK", "SPEND", "SPLIT", "STAND", "START", "STATE", "STICK", "STUDY",
             "TEACH", "THANK", "THINK", "THROW", "TOUCH", "TRAIN", "TREAT", "TRUST", "VISIT", "VOICE", "WASTE", "WATCH",
@@ -53,6 +53,7 @@ class game {
 
     static JPanel bottomPanel;
     static JTextField guessField;
+    static GridBagConstraints gbc;
     static JPanel[][] panels = new JPanel[6][5];
     static JLabel[][] labels = new JLabel[6][5];
 
@@ -66,9 +67,9 @@ class game {
                 guessField.setText("");
                 evalWord(i);
                 if (verifyWord()) {
-                    Thread.sleep(2500);
+                    Thread.sleep(1000);
                     youWin();
-                    Thread.sleep(2500);
+                    Thread.sleep(1000);
                     playAgain();
                     proceed();
                     break;
@@ -86,17 +87,17 @@ class game {
     }
 
     public void proceed() {
-        String x = getGuess();
-        if (x.equals("")) {
-            proceed = true;
-        } else
-            proceed = false;
+        do {
+            guessWord = guessField.getText().toUpperCase();
+        } while (!guessWord.equals("Y"));
+        proceed = true;
+        guessField.setText("");
 
     }
 
     public String getGuess() {
         do {
-            guessWord = guessField.getText();
+            guessWord = guessField.getText().toUpperCase();
         } while (!inDic(guessWord.toLowerCase()));
         return guessWord;
     }
@@ -187,11 +188,11 @@ class game {
 
     public void playAgain() {
         setText("PRESS", 0);
-        setText("ENTER", 1);
-        setText("TO   ", 2);
+        setText("Y  TO", 1);
+        setText("     ", 2);
         setText("PLAY ", 3);
         setText("AGAIN", 4);
-        setText("_____", 5);
+        setText("     ", 5);
     }
 
     public void GUI() {
@@ -214,7 +215,10 @@ class game {
         }
 
         bottomPanel = new JPanel(new GridLayout(1, 5));
-        guessField = new JTextField(5);
+        guessField = new JTextField(10);
+        gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         bottomPanel.add(guessField);
         frame.add(bottomPanel);
 
