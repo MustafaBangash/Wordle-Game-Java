@@ -200,7 +200,7 @@ class game {
         frame.setVisible(true);
         frame.setLayout(new GridLayout(7, 5));
         frame.setLocationRelativeTo(null);
-        frame.setSize(300, 600);
+        frame.setSize(300, 550);
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 5; j++) {
@@ -214,14 +214,11 @@ class game {
             }
         }
 
-        bottomPanel = new JPanel(new GridLayout(1, 5));
+        bottomPanel = new JPanel(new BorderLayout());
         guessField = new JTextField(10);
-        gbc = new GridBagConstraints();
-        gbc.gridwidth = GridBagConstraints.REMAINDER;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        bottomPanel.add(guessField);
-        frame.add(bottomPanel);
-
-        frame.setVisible(true);
+        guessField.setColumns(5);
+        guessField.setPreferredSize(new Dimension(300, 20));
+        bottomPanel.add(guessField, BorderLayout.CENTER);
+        frame.add(bottomPanel, BorderLayout.SOUTH);
     }
 }
